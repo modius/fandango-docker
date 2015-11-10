@@ -6,7 +6,7 @@
 # http://code.google.com/p/sequel-pro/
 #
 # Host: 192.168.33.9 (MySQL 5.6.19-0ubuntu0.14.04.1)
-# Database: chelsea
+# Database: fandango
 # Generation Time: 2015-07-31 10:20:54 +0000
 # ************************************************************
 
@@ -19,10 +19,10 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-# Create Chelsea database
+# Create fandango database
 # ------------------------------------------------------------
-CREATE DATABASE `chelsea`;
-USE `chelsea`;
+CREATE DATABASE `fandango`;
+USE `fandango`;
 
 # Dump of table container
 # ------------------------------------------------------------

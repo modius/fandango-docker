@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
       docker.env = {
         MYSQL_USER: "vagrant",
         MYSQL_PASS: "vagrant",
-        STARTUP_SQL: "/vagrant/config/mysql/chelsea.sql"
+        STARTUP_SQL: "/vagrant/config/mysql/fandango.sql"
       }
       docker.expose = %w(3306)
       docker.vagrant_machine = WORKBENCH_HOST
@@ -40,17 +40,17 @@ Vagrant.configure("2") do |config|
     puts '############################################################'
   end
 
-  config.vm.define "chelsea", autostart: true do |solo|
+  config.vm.define "fandango", autostart: true do |solo|
     solo.vm.provider "docker" do |docker|
       docker.name = PROJECT_ENV
       docker.build_dir = "."
       docker.link("mysql-" + PROJECT_ENV+ ":mysql")
       docker.env = {
-        VIRTUAL_HOST: PROJECT_ENV + ".*, chelsea.*",
-        FARCRY_DSN: "chelsea",
+        VIRTUAL_HOST: PROJECT_ENV + ".*, fandango.*",
+        FARCRY_DSN: "fandango",
         FARCRY_DBTYPE: "mysql",
         FARCRY_DSN_CLASS: "org.gjt.mm.mysql.Driver",
-        FARCRY_DSN_CONNECTIONSTRING: "jdbc:mysql://mysql:3306/chelsea?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useLegacyDatetimeCode=true",
+        FARCRY_DSN_CONNECTIONSTRING: "jdbc:mysql://mysql:3306/fandango?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useLegacyDatetimeCode=true",
         FARCRY_DSN_USERNAME: "vagrant",
         FARCRY_DSN_PASSWORD: "vagrant"
       }
@@ -76,18 +76,18 @@ Vagrant.configure("2") do |config|
 
   ##################################################
   # Launch solo-dev containers; using embedded H2
-  # - vagrant up chelseah2
+  # - vagrant up fandangoh2
   ##################################################
-  config.vm.define "chelseah2", autostart: false do |solo|
+  config.vm.define "fandangoh2", autostart: false do |solo|
     solo.vm.provider "docker" do |docker|
       docker.name = PROJECT_ENV + "-h2"
       docker.build_dir = "."
       docker.env = {
-        VIRTUAL_HOST: PROJECT_ENV + ".*, chelsea.*",
-        FARCRY_DSN: "chelsea",
+        VIRTUAL_HOST: PROJECT_ENV + ".*, fandango.*",
+        FARCRY_DSN: "fandango",
         FARCRY_DBTYPE: "h2",
         FARCRY_DSN_CLASS: "org.h2.Driver",
-        FARCRY_DSN_CONNECTIONSTRING: "jdbc:h2:chelsea/chelsea;MODE=MySQL",
+        FARCRY_DSN_CONNECTIONSTRING: "jdbc:h2:fandango/fandango;MODE=MySQL",
         FARCRY_DSN_USERNAME: "vagrant",
         FARCRY_DSN_PASSWORD: "vagrant"
       }
